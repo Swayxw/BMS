@@ -8,6 +8,7 @@
 #include "afxdialogex.h"
 #include <string>
 #include  "MainDialog.h"
+#include "Classes\CStaffDao.h"
 using namespace std;
 
 #ifdef _DEBUG
@@ -164,6 +165,8 @@ void CBMSDlg::OnBnClickedBtnLogin()
 
 	this->GetDlgItemTextW(IDC_EDIT_ACCOUNT, strAccount);
 	this->GetDlgItemTextW(IDC_EDIT_PASSWORD, strPassword);
+
+	CStaffDao staffDao;
 
 	if (strAccount == _T("sway_xw"))
 	{
