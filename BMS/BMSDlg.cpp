@@ -9,6 +9,7 @@
 #include <string>
 #include  "MainDialog.h"
 #include "Classes\CStaffDao.h"
+#include "Classes\CToolKit.h"
 using namespace std;
 
 #ifdef _DEBUG
@@ -166,22 +167,28 @@ void CBMSDlg::OnBnClickedBtnLogin()
 	this->GetDlgItemTextW(IDC_EDIT_ACCOUNT, strAccount);
 	this->GetDlgItemTextW(IDC_EDIT_PASSWORD, strPassword);
 
-	CStaffDao staffDao;
+	char aAccount[21];
+	char aPassword[15];
+	
+	CToolKit::ToChars(aAccount, strAccount, sizeof(aAccount));
+	CToolKit::ToChars(aPassword, strPassword, sizeof(aPassword));
 
-	if (strAccount == _T("sway_xw"))
+	CStaffDao staffDao;
+	if (staffDao.Login(aAccount, aPassword) == TRUE)
 	{
-		if (strPassword == _T("123456"))
+		//if (strPassword == _T("123456"))
+		//{
+		this->ShowWindow(SW_HIDE);
+		//MessageBox(_T("登录成功"));
+		CMainDialog dlg;
+		CStaff *pStaff = staffDao.FindByAccount(aAccount);
+		dlg.setInfo(CToolKit::ToString(const_cast<char *>(pStaff->getName().c_str()), pStaff->getName().size()));
+		INT_PTR nRespon = dlg.DoModal();
+		if (nRespon == IDCANCEL)
 		{
-			this->ShowWindow(SW_HIDE);
-			//MessageBox(_T("登录成功"));
-			CMainDialog dlg;
-			dlg.setInfo(strAccount);
-			INT_PTR nRespon = dlg.DoModal();
-			if (nRespon == IDCANCEL)
-			{
-				this->ShowWindow(SW_SHOW);
-			}
+			this->ShowWindow(SW_SHOW);
 		}
+		//}
 	}
 
 }

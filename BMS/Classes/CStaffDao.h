@@ -21,6 +21,8 @@ public:
 
 public:
 	BOOL Login(const char *pAccount, const char *pPassword);
+	BOOL Login(CStaff *pStaff);
+	CStaff *FindByAccount(const char *pAccount);
 private:
 	CStaff *PraseStaff(char *pStaffInfo);
 

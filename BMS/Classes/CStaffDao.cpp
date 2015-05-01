@@ -14,6 +14,43 @@ CStaffDao::~CStaffDao()
 {
 }
 
+BOOL CStaffDao::Login(CStaff *pStaff)
+{
+	ifstream infile;
+	//打开文件
+	infile.open("Resource/Staff.txt", ios::in);
+	if (!infile)
+	{
+		return FALSE;
+	}
+
+
+	//读文件
+	char aStaffInfo[STAFF_INFO_LENGTH] = {0};
+	CStaff *ps = NULL;
+	BOOL bRet = FALSE;
+	while (infile.getline(aStaffInfo, sizeof(aStaffInfo)))
+	{
+		//解析
+		ps = PraseStaff(aStaffInfo);
+		if (ps != NULL)
+		{
+			if (pStaff->getAccount() == ps->getAccount() && pStaff->getPassword() == ps->getPassword())
+			{
+				bRet = TRUE;
+				delete ps;
+				ps = NULL;
+				break;
+			}
+			delete ps;
+			ps = NULL;
+		}
+	}
+
+	//关闭文件
+	infile.close();
+	return bRet;
+}
 
 
 BOOL CStaffDao::Login(const char *pAccount, const char *pPassword)
@@ -64,10 +101,11 @@ CStaff *CStaffDao::PraseStaff(char *pStaffInfo)
 	char aFlag[5][STAFF_INFO_LENGTH] = { '\0' };
 	char *pBuf = pStaffInfo;
 	char *pStr = NULL;
+	char *p;
 	int nIndex = 0;
-	while ((pStr = strtok(pBuf, pDellims)) != NULL)
+	while ((pStr = strtok_s(pBuf, pDellims, &p)) != NULL)
 	{
-		strcpy(aFlag[nIndex], pStr);
+		strcpy_s(aFlag[nIndex], pStr);
 		pBuf = NULL;
 		nIndex++;
 	}
@@ -79,4 +117,37 @@ CStaff *CStaffDao::PraseStaff(char *pStaffInfo)
 	pStaff->setBankName(aFlag[3]);
 	pStaff->setPermission(atoi(aFlag[4]));
 	return pStaff;
+}
+
+
+CStaff *CStaffDao::FindByAccount(const char *pAccount)
+{
+	CStaff *pRet = NULL;
+	ifstream infile;
+	//打开文件
+	infile.open("Resource/Staff.txt", ios::in);
+	if (!infile)
+	{
+		return FALSE;
+	}
+	//读取文件
+	char aStaffInfo[STAFF_INFO_LENGTH] = {0};
+	CStaff *ps = NULL;
+	while (infile.getline(aStaffInfo, sizeof(aStaffInfo)))
+	{
+		ps = PraseStaff(aStaffInfo);
+		if (ps != NULL)
+		{
+			if (strcmp(pAccount, ps->getAccount().c_str()) == 0)
+			{
+				pRet = ps;
+				break;
+			}
+			delete ps;
+			ps = NULL;
+		}
+	}
+	//关闭文件
+	infile.close();
+	return pRet;
 }
