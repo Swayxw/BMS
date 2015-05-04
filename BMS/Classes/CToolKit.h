@@ -15,10 +15,13 @@ public:
 
 public:
 
-	//将CString类型转换为char*类型
+	/** 将CString类型转换为char*类型 */
 	static void ToChars(char *pDim, CString strSrc, const int nSize);
-
+	/* 将char*类型转换为CString类型 */
 	static CString ToString(char *pSrc, const int nSize);
+
+	/* 生成随机流水号 */
+	static void GenerateId(char *pDim, int nSize);
 
 };
 

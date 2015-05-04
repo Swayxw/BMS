@@ -66,3 +66,22 @@ CString CToolKit::ToString(char *pSrc, const int nSize)
 
 	return sRet;
 }
+
+
+void CToolKit::GenerateId(char *pDim, int nSize)
+{
+	//生成当前日期
+	time_t t = time(NULL);
+	struct tm *pTime = new tm();
+	localtime_s(pTime, &t);
+	char aTime[15] = { '\0' };
+	strftime(aTime, sizeof(aTime), "%Y%m%d%H%M%S", pTime);
+	strcat_s(pDim, nSize, aTime);
+	delete pTime;
+	//生成最后五位随机数
+	srand(time(0));
+	int nRand = rand() % 100000;
+	char aBuf[6] = { '\0' };
+	sprintf_s(aBuf, sizeof(aBuf), "%05d", nRand);
+	strcat_s(pDim, nSize, aBuf);
+}

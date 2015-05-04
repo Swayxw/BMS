@@ -190,5 +190,9 @@ void CBMSDlg::OnBnClickedBtnLogin()
 		}
 		//}
 	}
+	else
+	{
+		MessageBox(L"ÕÊºÅ»òÕßÃÜÂë´íÎó");
+	}
 
 }

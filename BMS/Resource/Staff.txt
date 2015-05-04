@@ -1,2 +1,2 @@
-sway_xw##123456##向维##中国银行##1
+sway_xw##123456##sway##中国银行##1
 administrator##123456##Andy##中国银行##1

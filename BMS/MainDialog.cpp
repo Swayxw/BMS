@@ -7,6 +7,7 @@
 #include "afxdialogex.h"
 #include <string>
 #include <iostream>
+#include "AddCustomerDlg.h"
 using namespace std;
 
 
@@ -31,6 +32,7 @@ void CMainDialog::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CMainDialog, CDialogEx)
+	ON_BN_CLICKED(IDC_BTN_ADDCUSTOMER, &CMainDialog::OnBnClickedBtnAddcustomer)
 END_MESSAGE_MAP()
 
 
@@ -63,4 +65,12 @@ BOOL CMainDialog::OnInitDialog()
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
+}
+
+
+void CMainDialog::OnBnClickedBtnAddcustomer()
+{
+	// TODO: Add your control notification handler code here
+	CAddCustomerDlg dlg;
+	dlg.DoModal();
 }
