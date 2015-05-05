@@ -28,6 +28,9 @@ BOOL CCustomerDao::Save(CCustomer *pCustomer)
 	sprintf_s(buff, sizeof(buff), "%s##%s##%d##%s##%s##%s##%s##%d##%s\n", pCustomer->getAccount().c_str(), pCustomer->getName().c_str(),
 		pCustomer->getGender(), pCustomer->getIdNum().c_str(), pCustomer->getPhoneNum().c_str(), 
 		pCustomer->getAddress().c_str(), pCustomer->getEmail().c_str(), pCustomer->getCredit(), strTime);
+
+
+	string saveStr = buff;
 	ofstream outFile;
 	//打开文件
 	outFile.open("Resource/Customer.txt", ios::app);
@@ -36,7 +39,7 @@ BOOL CCustomerDao::Save(CCustomer *pCustomer)
 		return FALSE;
 	}
 	//写入数据
-	if (outFile.write(buff, sizeof(buff)))
+	if (outFile.write(saveStr.c_str(), saveStr.size()))
 	{
 		bRet = TRUE;
 	}
