@@ -12,6 +12,7 @@
 #include "CCustomer.h"
 using namespace std;
 
+#define CUSTOMER_INFO_MAX  128
 
 class CCustomerDao
 {
@@ -22,6 +23,13 @@ public:
 
 public:
 	BOOL Save(CCustomer *pCustomer);
+	/*判断是否存在以参数为帐户的用户， 存在返回true， 否则返回false*/
+	bool IsExsit(const char *pAccount);
+	/*通过用户账户查找用户，返回用户的对象指针*/
+	CCustomer *FindByAccount(const char *pAccount);
+private:
+	/*解析客户信息的字符串，返回一个客户对象指针*/
+	CCustomer *parseCustomer(const char *pCustomerInfo);
 };
 
 

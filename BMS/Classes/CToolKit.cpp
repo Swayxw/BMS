@@ -85,3 +85,67 @@ void CToolKit::GenerateId(char *pDim, int nSize)
 	sprintf_s(aBuf, sizeof(aBuf), "%05d", nRand);
 	strcat_s(pDim, nSize, aBuf);
 }
+
+
+BOOL CToolKit::charToTime(const char *pVal, struct tm &outTime)
+{
+	//BOOL bRet = FALSE;
+
+	//处理字符串文本去除'-'和':'
+	//string tempStr = pVal;
+	//for (string::iterator it = tempStr.begin(); it != tempStr.end(); it++)
+	//{
+		//if (((*it) == '-') || ((*it) == ':'))
+		//{
+			//tempStr.erase(it);
+		//}
+	//}
+	char *pBeginPos = const_cast<char *>(pVal);
+	char *pPos = strstr(pBeginPos, "-");
+	if (pPos == NULL)
+	{
+		printf("strDateStr[%s] err \n", pVal);
+		//bRet = FALSE;
+		return FALSE;
+	}
+	int iYear = atoi(pBeginPos);
+	int iMonth = atoi(pPos + 1);
+
+	pPos = strstr(pPos + 1, "-");
+	if (pPos == NULL)
+	{
+		printf("strDateStr[%s] err \n", pVal);
+		//bRet = FALSE;
+		return FALSE;
+	}
+	int iDay = atoi(pPos + 1);
+	int iHour = 0;
+	int iMin = 0;
+	int iSec = 0;
+	pPos = strstr(pPos + 1, " ");
+	//为了兼容有些没有精确到时分秒的
+	if (pPos != NULL)
+	{
+		iHour = atoi(pPos + 1);
+		pPos = strstr(pPos+1, ":");
+		if (pPos != NULL)
+		{
+			iMin = atoi(pPos + 1);
+			pPos = strstr(pPos + 1, ":");
+			if (pPos != NULL)
+			{
+				iDay = atoi(pPos + 1);
+			}
+		}
+	}
+	
+	memset(&outTime, 0, sizeof(outTime));
+	outTime.tm_sec = iSec;
+	outTime.tm_min = iMin;
+	outTime.tm_hour = iHour;
+	outTime.tm_mday = iDay;
+	outTime.tm_mon = iMonth - 1;
+	outTime.tm_year = iYear - 1900;
+
+	return TRUE;
+}

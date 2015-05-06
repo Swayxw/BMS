@@ -102,8 +102,15 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddCustomerDlg.h" />
+    <ClInclude Include="AddSaveingCardDlg.h" />
     <ClInclude Include="BMS.h" />
     <ClInclude Include="BMSDlg.h" />
+    <ClInclude Include="Classes\CardTypeDao.h" />
+    <ClInclude Include="Classes\CCustomer.h" />
+    <ClInclude Include="Classes\CCustomerDao.h" />
+    <ClInclude Include="Classes\CSavingCard.h" />
+    <ClInclude Include="Classes\CSavingCardDao.h" />
     <ClInclude Include="Classes\CStaff.h" />
     <ClInclude Include="Classes\CStaffDao.h" />
     <ClInclude Include="Classes\CToolKit.h" />
@@ -113,8 +120,15 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddCustomerDlg.cpp" />
+    <ClCompile Include="AddSaveingCardDlg.cpp" />
     <ClCompile Include="BMS.cpp" />
     <ClCompile Include="BMSDlg.cpp" />
+    <ClCompile Include="Classes\CardTypeDao.cpp" />
+    <ClCompile Include="Classes\CCustomer.cpp" />
+    <ClCompile Include="Classes\CCustomerDao.cpp" />
+    <ClCompile Include="Classes\CSavingCard.cpp" />
+    <ClCompile Include="Classes\CSavingCardDao.cpp" />
     <ClCompile Include="Classes\CStaff.cpp" />
     <ClCompile Include="Classes\CStaffDao.cpp" />
     <ClCompile Include="Classes\CToolKit.cpp" />

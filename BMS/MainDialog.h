@@ -25,4 +25,5 @@ public:
 	void setInfo(const CString &val){ m_strInfo = val; }
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedBtnAddcustomer();
+	afx_msg void OnBnClickedBtnAddsavingcard();
 };

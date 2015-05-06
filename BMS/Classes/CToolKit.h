@@ -7,6 +7,8 @@
 #ifndef _BMS__CTOOLKIT_H_
 #define _BMS__CTOOLKIT_H_
 #include <AFX.h>
+#include <string>
+using namespace std;
 class CToolKit
 {
 public:
@@ -23,6 +25,7 @@ public:
 	/* 生成随机流水号 */
 	static void GenerateId(char *pDim, int nSize);
 
+	static BOOL charToTime(const char *pVal, struct tm &outTime);
 };
 
 

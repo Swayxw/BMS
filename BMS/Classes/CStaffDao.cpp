@@ -128,7 +128,7 @@ CStaff *CStaffDao::FindByAccount(const char *pAccount)
 	infile.open("Resource/Staff.txt", ios::in);
 	if (!infile)
 	{
-		return FALSE;
+		return NULL;
 	}
 	//╤ах║нд╪Ч
 	char aStaffInfo[STAFF_INFO_LENGTH] = {0};
