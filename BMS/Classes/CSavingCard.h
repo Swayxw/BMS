@@ -6,7 +6,7 @@
 
 
 #ifndef _BMS__CSAVINGCARD_H_
-#define _BMS__CASVINGCARD_H_
+#define _BMS__CSAVINGCARD_H_
 
 #include <string>
 #include <AFX.h>
