@@ -182,7 +182,8 @@ void CBMSDlg::OnBnClickedBtnLogin()
 		//MessageBox(_T("µÇÂ¼³É¹¦"));
 		CMainDialog dlg;
 		CStaff *pStaff = staffDao.FindByAccount(aAccount);
-		dlg.setInfo(CToolKit::ToString(const_cast<char *>(pStaff->getName().c_str()), pStaff->getName().size()));
+		dlg.setName(CToolKit::ToString(const_cast<char *>(pStaff->getName().c_str()), pStaff->getName().size()));
+		dlg.setAccount(CToolKit::ToString(const_cast<char *>(pStaff->getAccount().c_str()), pStaff->getAccount().size()));
 		INT_PTR nRespon = dlg.DoModal();
 		if (nRespon == IDCANCEL)
 		{

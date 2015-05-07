@@ -2,7 +2,6 @@
 
 
 // CMainDialog dialog
-
 class CMainDialog : public CDialogEx
 {
 	DECLARE_DYNAMIC(CMainDialog)
@@ -20,9 +19,14 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 private:
-	CString m_strInfo;
+	CString m_strName;
+	CString m_strAccount;
 public:
-	void setInfo(const CString &val){ m_strInfo = val; }
+	CString getName()const { return m_strName; }
+	void setName(const CString &val){ m_strName = val; }
+
+	CString getAccount()const { return m_strAccount; }
+	void setAccount(const CString &val){ m_strAccount = val; }
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedBtnAddcustomer();
 	afx_msg void OnBnClickedBtnAddsavingcard();

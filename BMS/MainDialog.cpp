@@ -47,7 +47,7 @@ BOOL CMainDialog::OnInitDialog()
 
 	ModifyStyleEx(0, WS_EX_APPWINDOW);
 #ifdef _UNICODE
-	wstring info = m_strInfo;
+	wstring info = m_strName;
 	wstring s;
 	s.append(_T("管理员【"));
 	s.append(info);
@@ -60,7 +60,6 @@ BOOL CMainDialog::OnInitDialog()
 	s.append("】，已登录");
 #endif
 	this->SetDlgItemTextW(IDC_STATIC_TEXT, CString(s.c_str()));
-
 
 
 
