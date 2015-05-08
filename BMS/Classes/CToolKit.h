@@ -24,6 +24,7 @@ public:
 
 	/* 生成随机流水号 */
 	static void GenerateId(char *pDim, int nSize);
+	static void GenerateCardNum(char *pDim, int nSize);
 
 	static BOOL charToTime(const char *pVal, struct tm &outTime);
 };

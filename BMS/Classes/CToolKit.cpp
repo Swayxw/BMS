@@ -86,20 +86,27 @@ void CToolKit::GenerateId(char *pDim, int nSize)
 	strcat_s(pDim, nSize, aBuf);
 }
 
+void CToolKit::GenerateCardNum(char *pDim, int nSize)
+{
+	//生成当前日期
+	time_t t = time(NULL);
+	struct tm tempTm; 
+	localtime_s(&tempTm, &t);
+	char aTime[15] = {'\0'};
+	strftime(aTime, sizeof(aTime), "%Y%m%d%H%M%S", &tempTm);
+	strcat_s(pDim, nSize, aTime);
+	
+	//生成最后五位随机数
+	srand(time(0));
+	int nRand = rand() % 100000;
+	char aBuf[6] = { '\0' };
+	sprintf_s(aBuf, sizeof(aBuf), "%05d", nRand);
+	strcat_s(pDim, nSize, aBuf);
+}
+
 
 BOOL CToolKit::charToTime(const char *pVal, struct tm &outTime)
 {
-	//BOOL bRet = FALSE;
-
-	//处理字符串文本去除'-'和':'
-	//string tempStr = pVal;
-	//for (string::iterator it = tempStr.begin(); it != tempStr.end(); it++)
-	//{
-		//if (((*it) == '-') || ((*it) == ':'))
-		//{
-			//tempStr.erase(it);
-		//}
-	//}
 	char *pBeginPos = const_cast<char *>(pVal);
 	char *pPos = strstr(pBeginPos, "-");
 	if (pPos == NULL)

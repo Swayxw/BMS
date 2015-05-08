@@ -12,6 +12,7 @@
 #include "MainDialog.h"
 #include "Classes\CStaff.h"
 #include "Classes\CStaffDao.h"
+#include "Classes\CardTypeDao.h"
 
 
 // AddSaveingCardDlg dialog
@@ -58,6 +59,7 @@ void AddSaveingCardDlg::OnBnClickedOk()
 	CCustomerDao customer;
 	CSavingCard pSavingCar;
 	CSavingCardDao pSavingCardDao;
+	CardTypeDao pCardTypeDao;
 
 	//用户账户
 	char aAccount[21] = { '\0' };
@@ -114,4 +116,39 @@ void AddSaveingCardDlg::OnBnClickedOk()
 	CStaff *pStaff = NULL;
 	pStaff = staffDao.FindByAccount(aStaffAcount);
 	pSavingCar.setBankName(pStaff->getBankName().c_str());
+
+	//卡的类型
+	pSavingCar.setType(0);
+
+	//创建时间
+	struct tm tempTm;
+	time_t t = time(NULL);
+	localtime_s(&tempTm, &t);
+	pSavingCar.setCreateDate(tempTm);
+
+	//积分
+	pSavingCar.setBonusPoints(0);
+
+	//利率
+	pSavingCar.setInterestRate(double(0.31));
+
+	//卡号
+	char aCardNum[21] = {'S'};
+	CToolKit::GenerateCardNum(aCardNum, sizeof(aCardNum));
+	pSavingCar.setCardNum(aCardNum);
+
+	if (pSavingCardDao.save(&pSavingCar) && pCardTypeDao.saveCardType(aCardNum, pSavingCar.getType()))
+	{
+		MessageBox(L"创建储蓄卡成功\n卡号："+ CToolKit::ToString(aCardNum, sizeof(aCardNum)) + "\n请牢记卡号");
+	}
+	else
+	{
+		MessageBox(L"创建储蓄卡失败，请检查信息是否有误");
+	}
+
+	this->SetDlgItemTextW(IDC_ADD_SAVINGCARD_EDIT_USERACCOUNT, L"");
+	this->SetDlgItemTextW(IDC_ADD_SAVINGCARD_EDIT_SETPASSWORD, L"");
+	this->SetDlgItemTextW(IDC_ADD_SAVINGCARD_EDIT_CONFIRMPASSWORD, L"");
+	this->SetDlgItemInt(IDC_ADD_SAVINGCARD_EDIT_SUM, 0);
+
 }
