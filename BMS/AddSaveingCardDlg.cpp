@@ -150,5 +150,4 @@ void AddSaveingCardDlg::OnBnClickedOk()
 	this->SetDlgItemTextW(IDC_ADD_SAVINGCARD_EDIT_SETPASSWORD, L"");
 	this->SetDlgItemTextW(IDC_ADD_SAVINGCARD_EDIT_CONFIRMPASSWORD, L"");
 	this->SetDlgItemInt(IDC_ADD_SAVINGCARD_EDIT_SUM, 0);
-
 }
