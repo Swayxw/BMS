@@ -24,7 +24,7 @@ bool CCreditCardDao::save(CCreditCard *pCard)
 	strftime(strDate, sizeof(strDate), "%Y-%m-%d %H:%M:%S", &(pCard->getCreateDate()));
 
 	char aBuf[500] = {'\0'};
-	sprintf_s(aBuf, sizeof(aBuf), "%s##%s##%s##%s##%s##%d##%f##%f##%f##%f##%d##%d\n", pCard->getCardNum().c_str(),
+	sprintf_s(aBuf, sizeof(aBuf), "%s##%s##%s##%s##%s##%d##%f##%f##%f##%d##%d\n", pCard->getCardNum().c_str(),
 		pCard->getPassword().c_str(), pCard->getAccount().c_str(), pCard->getBankName().c_str(), strDate,
 		pCard->getBonuspoint(), pCard->getMoney(), pCard->getCredit(), pCard->getHandleChargeRate(),
 		pCard->getBillDay(), pCard->getRepaymentDay());

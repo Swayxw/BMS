@@ -87,7 +87,7 @@ void AddSaveingCardDlg::OnBnClickedOk()
 	//确认密码
 	char aConfirmPassword[7] = { '\0' };
 	CToolKit::ToChars(aConfirmPassword, strConfirmPassword, sizeof(aConfirmPassword));
-	if (strcmp(aSetPassword, aConfirmPassword) != 0)
+	if (!(strcmp(aSetPassword, aConfirmPassword) == 0))
 	{
 		if (IDOK == MessageBox(L"前后两次输入不相同，请重新输入"))
 		{
@@ -150,4 +150,15 @@ void AddSaveingCardDlg::OnBnClickedOk()
 	this->SetDlgItemTextW(IDC_ADD_SAVINGCARD_EDIT_SETPASSWORD, L"");
 	this->SetDlgItemTextW(IDC_ADD_SAVINGCARD_EDIT_CONFIRMPASSWORD, L"");
 	this->SetDlgItemInt(IDC_ADD_SAVINGCARD_EDIT_SUM, 0);
+}
+
+
+BOOL AddSaveingCardDlg::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	// TODO:  Add extra initialization here
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// EXCEPTION: OCX Property Pages should return FALSE
 }

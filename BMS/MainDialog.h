@@ -30,4 +30,5 @@ public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedBtnAddcustomer();
 	afx_msg void OnBnClickedBtnAddsavingcard();
+	afx_msg void OnBnClickedBtnAddcreditcard();
 };

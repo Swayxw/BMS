@@ -9,6 +9,7 @@
 #include <iostream>
 #include "AddCustomerDlg.h"
 #include "AddSaveingCardDlg.h"
+#include "AddCreditCardDlg.h"
 using namespace std;
 
 
@@ -35,6 +36,7 @@ void CMainDialog::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CMainDialog, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_ADDCUSTOMER, &CMainDialog::OnBnClickedBtnAddcustomer)
 	ON_BN_CLICKED(IDC_BTN_ADDSAVINGCARD, &CMainDialog::OnBnClickedBtnAddsavingcard)
+	ON_BN_CLICKED(IDC_BTN_ADDCREDITCARD, &CMainDialog::OnBnClickedBtnAddcreditcard)
 END_MESSAGE_MAP()
 
 
@@ -81,5 +83,13 @@ void CMainDialog::OnBnClickedBtnAddsavingcard()
 {
 	// TODO: Add your control notification handler code here
 	AddSaveingCardDlg dlg;
+	dlg.DoModal();
+}
+
+
+void CMainDialog::OnBnClickedBtnAddcreditcard()
+{
+	// TODO: Add your control notification handler code here
+	AddCreditCardDlg dlg;
 	dlg.DoModal();
 }

@@ -67,7 +67,7 @@ public:
 	int getBillDay()const { return m_nBillDay; }
 
 	void setRepaymentDay(const int val){ m_nRepaymentDay = val; }
-	int getRepaymentDay()const { m_nRepaymentDay; }
+	int getRepaymentDay()const { return m_nRepaymentDay; }
 };
 
 #endif
