@@ -20,6 +20,11 @@ public:
 
 public:
 	bool save(CCreditCard *pCard);
+	bool isExsit(const char *pCardNum);
+	CCreditCard *getCardByCardNum(const char *pCardNum);
+	bool Update(CCreditCard *pCard);
+private:
+	CCreditCard *praseCreditCard(const char *pCreditCardInfo);
 };
 
 

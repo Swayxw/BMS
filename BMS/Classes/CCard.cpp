@@ -23,3 +23,19 @@ CCard::CCard()
 CCard::~CCard()
 {
 }
+
+void CCard::Deposit(double val)
+{
+	m_dbMoney += val;
+}
+
+bool CCard::Withdraw(double val)
+{
+	return false;
+}
+
+
+bool CCard::Cash(double val)
+{
+	return false;
+}

@@ -14,6 +14,18 @@
 using namespace std;
 
 
+struct CardTypeStruct
+{
+	CardTypeStruct()
+	{
+		strcpy_s(m_aCardNum, "");
+		m_nType = 0;
+	}
+	char m_aCardNum[21];
+	int m_nType;
+};
+
+
 class CardTypeDao
 {
 public:
@@ -22,5 +34,7 @@ public:
 
 public:
 	BOOL saveCardType(const char *pCardNum, int nType);
+	bool getTypeByCardNum(const char *pCardNum, int &nType);
+	CardTypeStruct *praseCardType(char *pCardTypeInfo);
 };
 #endif

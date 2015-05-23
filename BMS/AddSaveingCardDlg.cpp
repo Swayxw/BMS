@@ -127,7 +127,7 @@ void AddSaveingCardDlg::OnBnClickedOk()
 	pSavingCar.setCreateDate(tempTm);
 
 	//积分
-	pSavingCar.setBonusPoints(0);
+	pSavingCar.setBonusPoint(0);
 
 	//利率
 	pSavingCar.setInterestRate(double(0.31));

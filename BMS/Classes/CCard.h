@@ -29,9 +29,9 @@ protected:
 	double m_dbMoney;
 
 public:
-	void Deposit(double val);
-	bool Withdraw(double val);
-	bool Cash(double val);
+	virtual void Deposit(double val);
+	virtual bool Withdraw(double val);
+	virtual bool Cash(double val);
 
 public:
 	void setCardNum(const char *pVal){ strcpy_s(m_aCardNum, pVal); }
@@ -43,7 +43,7 @@ public:
 	void setAccount(const char *pVal){ strcpy_s(m_aAccount, pVal); }
 	string getAccount()const { return m_aAccount; }
 
-	void setBankname(const char *pVal){ strcpy_s(m_aBankName, pVal); }
+	void setBankName(const char *pVal){ strcpy_s(m_aBankName, pVal); }
 	string getBankName()const { return m_aBankName; }
 
 	void setType(const int val){ m_nType = val; }
@@ -53,7 +53,7 @@ public:
 	struct tm getCreateDate() const { return m_tCreateDate; }
 
 	void setBonusPoint(const int val) { m_nBonusPoint = val; }
-	int getBpnusPoint() const { return m_nBonusPoint; }
+	int getBonusPoint() const { return m_nBonusPoint; }
 
 	void setMoney(const double val) { m_dbMoney = val; }
 	double getMoney() const { return m_dbMoney; }

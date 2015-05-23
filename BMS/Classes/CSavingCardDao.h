@@ -22,6 +22,11 @@ public:
 public:
 
 	BOOL save(CSavingCard *pCard);
+	CSavingCard *getCardByCardNum(const char *pCardNum);
+	bool isExsit(const char *pCardNum);
+	bool Update(CSavingCard *pCard);
+private:
+	CSavingCard *praseSavingCard(const char *pSavingCardInfo);
 };
 
 #endif
